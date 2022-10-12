@@ -1,19 +1,16 @@
 pipeline {
     agent any
     stages {
-        stage('Checkout') {
-            steps {
-                echo 'Checkout'
-            }
-        }
         stage('Build') {
             steps {
                 echo 'Build'
+                sh 'mvn clean package'
             }
         }
-        stage('Deploy') {
+        stage('Test') {
             steps {
-                echo 'Deploy'
+                echo 'Test'
+                sh 'mvn test'
             }
         }
     }
